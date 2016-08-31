@@ -1,0 +1,19 @@
+html {
+
+}
+
+li {
+    display: inline;
+    margin-right: 4em;
+}
+
+a   {
+    text-decoration: none;
+    font: 3em Chiller; 
+    color:#777;
+}
+
+a:hover {
+    color:#fa485b;
+}
+

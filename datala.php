@@ -8,6 +8,7 @@ if(!isset($_SESSION['login']))
 {
   header('Location:index.html');
   die();
+
 }
 ?>
 <!DOCTYPE html>

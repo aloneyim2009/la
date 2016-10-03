@@ -128,7 +128,7 @@ while(list($id_personal,$id_prefix,$fname,$lname,$id_position,$id_subdepart,$id_
  <?php 
    $query = db()->query('SELECT * from la_prefix where id_prefix="'.$id_prefix.'"');
    $query1 = db()->query('SELECT * from la_position where id_position="'.$id_position.'"');
-   $query2 = db()->query('SELECT * from subdepart where id_subdepart="'.$id_subdepart.'"');
+   $query2 = db()->query('SELECT * from la_subdepart where id_subdepart="'.$id_subdepart.'"');
    $query3 = db()->query('SELECT * from la_department where id_department="'.$id_departmaent.'"');
    $query4 = db()->query('SELECT * from la_personal where id_personal="'.$id_personal.'"');
    

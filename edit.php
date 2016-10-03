@@ -24,33 +24,9 @@ if(!isset($_SESSION['login']))
 </head>
     
 <body id="page-top" class="index">
-	<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
-	<div class="navbar-header page-scroll">
-	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-<span class="sr-only">Toggle navigation</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a class="navbar-brand" href="information.php">ข้อมูลบุคลากร</a>
-        
-</div>
-
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-<ul class="nav navbar-nav navbar-right">
-	<li class="hidden">
-<a href="#page-top"></a></li>
-	<li class="page-scroll"><a href="logout.php">ออกจากระบบ</a></li></ul></div></div></nav>
+	<?php include 'menu.php';?>
     
 <div class="col-lg-12" style="background-color:#CCFFFF;">
-<br><br><br><br><br><br>
-
-<center><p><button type="button" class="btn btn-warning btn-lg"><a href="page2.php"></href>หน้าหลัก</button> 
-<button type="button" class="btn btn-primarys btn-lg"><a href="add.php"></href>เพิ่มข้อมูลการลา</button>
-<button type="button" class="btn btn-danger btn-lg"><a href="datala.php"></href>เรียกดูข้อมูลการลา</button></a> </p></center>
-<h1><center>ข้อมูลส่วนตัว</center></h1>
-<br><br>
 
 <?php    
 $query = db()->query('SELECT id_personal,id_prefix,fname,lname,id_position,id_subdepart,tel,username,password,id_departmaent FROM la_personal where id_personal="'.$_SESSION['iduser'].'"');
@@ -116,7 +92,7 @@ list($id_personal, $id_prefix, $fname, $lname, $id_position, $id_subdepart, $tel
 	<label class="col-sm-3 control-label">แผนก :</label>
 <div class="col-sm-6">
   <select name="id_subdepart" class="form-control" >
- <?php  $query = db()->query('SELECT id_subdepart,namesubdepart FROM subdepart');
+ <?php  $query = db()->query('SELECT id_subdepart,namesubdepart FROM la_subdepart');
 		echo db()->error;
 		while(list($idsubdepart1,$namesubdepart1) = $query->fetch_row())
 		{ ?>

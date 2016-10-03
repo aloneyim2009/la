@@ -50,35 +50,9 @@ $("#show").html(html);
 	</head>
     
 <body id="page-top" class="index">
-	<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
-	<div class="navbar-header page-scroll">
-	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-<span class="sr-only">Toggle navigation</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a class="navbar-brand" href="page2.php">ระบบการลาของบุคลากร</a>
-</div>
-
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-<ul class="nav navbar-nav navbar-right">
-	<li class="hidden">
-<a href="#page-top"></a></li>
-	<li class="page-scroll"><a href="information.php">ข้อมูลส่วนตัว</a></li>
-	<li class="page-scroll"><a href="logout.php">ออกจากระบบ</a></li></ul></div></div></nav>
-    
-    
-     <div class="col-lg-12" style="background-color:#CCFFFF;">
-<br><br><br><br><br><br>
-
-<center><h2>เอกสารการลาของบุคลากร</h2></center><br>
-
-         <center><p><button type="button" class="btn btn-warning btn-lg"><a href="page2.php"></href>หน้าหลัก</button> 
-<button type="button" class="btn btn-danger btn-lg"><a href="datala.php"></href>เรียกดูข้อมูลการลา</button></a></p></center>
+	<?php include 'menu.php';?>
 <br>
-    
+    <br>
 <div class="container">
 	<div class="row">
 	<form class="form-horizontal" action="insert.php" method="post" enctype="multipart/form-data">
@@ -149,6 +123,7 @@ $("#show").html(html);
 	<div class="col-sm-6">
 	 <input a class="btn btn-primary" type="submit" value="บันทึกข้อมูล"></a></div>
 	 </div>
+	
 </form>
 
 <table class="table table-condensed">
@@ -157,9 +132,9 @@ $("#show").html(html);
 		<td>ประเภทการลา</td>
 		<td>ตั้งแต่วันที่</td>
 		<td>ถึงวันที่</td>
-		<td>status1</td>             
-		<td>status2</td>
-        <td>status3</td>
+		<td>หัวหน้า/รอง ผอ.</td>             
+		<td>หัวหน้า สนง.</td>
+        <td>ผอ.</td>
         <td>แสดงใบลา</td>
 		<td>แนบไฟล์</td>
         <td>แก้ไข</td>
@@ -183,9 +158,27 @@ while(list($id_detail,$id_type,$sdate,$ndate,$comment,$id_personal,$now_date,$st
 		?></td>
 		<td><?php echo $sdate;?></td>
 		<td><?php echo $ndate;?></td>
-        <td><?php echo $status1?></td>
-        <td><?php echo $status2?></td>
-        <td><?php echo $status3?></td>
+    <td>  <?php 
+			if($status1==0){
+				echo "ยังไม่อนุมัติ";
+			}else{
+				echo "อนุมัติ";
+			}
+		?></td>
+        <td><?php 
+			if($status2==0){
+				echo "ยังไม่อนุมัติ";
+			}else{
+				echo "อนุมัติ";
+			}
+		?></td>
+        <td><?php 
+			if($status2==0){
+				echo "ยังไม่อนุมัติ";
+			}else{
+				echo "อนุมัติ";
+			}
+		?></td>
          <td>
          <?php 
 			if($id_type==1){
@@ -204,7 +197,6 @@ while(list($id_detail,$id_type,$sdate,$ndate,$comment,$id_personal,$now_date,$st
 <?php
 }
 ?>
-	
 </table>
 
 </body>

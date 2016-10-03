@@ -134,7 +134,7 @@ function thai_date_short_number($time){   // 19-12-56
   <?php
     $query = db()->query('SELECT * from la_prefix where id_prefix="'.$id_prefix.'"');
     $query1 = db()->query('SELECT * from la_position where id_position="'.$id_position.'"');
-    $query2 = db()->query('SELECT * from subdepart where id_subdepart="'.$id_subdepart.'"');
+    $query2 = db()->query('SELECT * from la_subdepart where id_subdepart="'.$id_subdepart.'"');
     $query3 = db()->query('SELECT * from la_department where id_department="'.$id_departmaent.'"');
     $query4 = db()->query('SELECT * from la_personal where id_personal="'.$id_personal.'"');
 
@@ -224,7 +224,7 @@ function thai_date_short_number($time){   // 19-12-56
 คลอดบุตร &nbsp;&nbsp; ครั้งสุดท้ายตั้งแต่วันที่ &nbsp;&nbsp;<?php echo date_format($sdate1,"d/m/Y");?>&nbsp;&nbsp; ถึงวันที่ &nbsp;&nbsp;<?php echo date_format($ndate1,"d/m/Y");?>&nbsp;&nbsp;</td>
 <?php } ?>   </tr>
    <tr>
-     <td >ถึงวันที่..................................................มีกำหนด..................วัน ในระหว่างลาจะติดต่อข้าพเจ้าได้ที่&nbsp; &nbsp; &nbsp;<?php echo $row4['tel'];?></td>
+     <td>มีกำหนด..................วัน ในระหว่างลาจะติดต่อข้าพเจ้าได้ที่&nbsp; &nbsp; &nbsp;<?php echo $row4['tel'];?></td>
    </tr>
    <tr>
      <td >&nbsp;</td>

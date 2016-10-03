@@ -25,34 +25,7 @@ if(!isset($_SESSION['login']))
 </head>
     
 <body id="page-top" class="index">
-	<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
-	<div class="navbar-header page-scroll">
-	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-<span class="sr-only">Toggle navigation</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a class="navbar-brand" href="#portfolio">ข้อมูลบุคลากร</a>
-        
-</div>
-
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-<ul class="nav navbar-nav navbar-right">
-	<li class="hidden">
-<a href="#page-top"></a></li>
-    <li class="page-scroll"><a href="edit.php">แก้ไขข้อมูลส่วนตัว</a></li>
-	<li class="page-scroll"><a href="logout.php">ออกจากระบบ</a></li></ul></div></div></nav>
-    
-<div class="col-lg-12" style="background-color:#CCFFFF;">
-<br><br><br><br><br><br>
-
-<center><p><button type="button" class="btn btn-warning btn-lg"><a href="page2.php"></href>หน้าหลัก</button> 
-<button type="button" class="btn btn-primarys btn-lg"><a href="add.php"></href>เพิ่มข้อมูลการลา</button>
-<button type="button" class="btn btn-danger btn-lg"><a href="datala.php"></href>เรียกดูข้อมูลการลา</button></a></p></center>
-<h1><center>ข้อมูลส่วนตัว</center></h1>
-<br><br>
+	<?php include 'menu.php';?>
 
     <?php
 $query = db()->query('SELECT id_personal,id_prefix,fname,lname,id_position,id_subdepart,id_departmaent,tel,username,password FROM la_personal where id_personal="'.$_SESSION['iduser'].'"');
@@ -82,7 +55,7 @@ $row = $query->fetch_assoc();
     
 แผนก:         
      <td><?php 
-$query = db()->query('SELECT * from subdepart where id_subdepart="'.$id_subdepart.'"');
+$query = db()->query('SELECT * from la_subdepart where id_subdepart="'.$id_subdepart.'"');
 echo db()->error;
 $row = $query->fetch_assoc();
   echo $row ['namesubdepart'];?>
@@ -98,26 +71,17 @@ $row = $query->fetch_assoc();
 
 <center><h3>เบอร์โทร:    
     <td><?php 
-$query = db()->query('SELECT * from la_personal where tel="'.$tel.'"');
-echo db()->error;
-$row = $query->fetch_assoc();
-  echo $row ['tel'];?>
+  echo $tel;?>
     </td>&nbsp;
     
 ไอดีล็อกอิน:    
      <td><?php 
-$query = db()->query('SELECT * from la_personal where username	="'.$username.'"');
-echo db()->error;
-$row = $query->fetch_assoc();
-  echo $row ['username'];?>
+  echo $username;?>
     </td>&nbsp;
 
 พาสเวิร์ด:    
        <td><?php 
-$query = db()->query('SELECT * from la_personal where password	="'.$password.'"');
-echo db()->error;
-$row = $query->fetch_assoc();
-  echo $row ['password'];?>
+  echo $password;?>
     </td></h3></center>
     
     

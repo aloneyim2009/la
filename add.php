@@ -121,6 +121,12 @@ $("#show").html(html);
 	 <div class="form-group">
 	<div class="col-sm-5"></div>
 	<div class="col-sm-6">
+	<?php 
+	$query=db()->query('SELECT id_boss FROM la_personal WHERE id_personal = "'.$_SESSION['iduser'].'"');
+	echo db()->error;
+	$row = $query->fetch_assoc();
+	?>
+	 <input type="hidden" name="idboss" value="<?php echo $row['id_boss'];?>">
 	 <input a class="btn btn-primary" type="submit" value="บันทึกข้อมูล"></a></div>
 	 </div>
 	
@@ -182,7 +188,7 @@ while(list($id_detail,$id_type,$sdate,$ndate,$comment,$id_personal,$now_date,$st
          <td>
          <?php 
 			if($id_type==1){
-			?>	 <a href="from1.php?id_detail=<?php echo $id_detail;?>">คลิ๊ก</a>
+			?>	 <a href="from1pdf.php?id_detail=<?php echo $id_detail;?>">คลิ๊ก</a>
 			<?php }else{?>
 				<a href="from2.php?id_detail=<?php echo $id_detail;?>">คลิ๊ก</a>
 			<?php }

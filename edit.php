@@ -29,8 +29,8 @@ if(!isset($_SESSION['login']))
 <div class="col-lg-12" style="background-color:#CCFFFF;">
 
 <?php    
-$query = db()->query('SELECT id_personal,id_prefix,fname,lname,id_position,id_subdepart,tel,username,password,id_departmaent FROM la_personal where id_personal="'.$_SESSION['iduser'].'"');
-list($id_personal, $id_prefix, $fname, $lname, $id_position, $id_subdepart, $tel, $username, $password, $id_departmaent) = $query->fetch_row();
+$query = db()->query('SELECT id_personal,id_prefix,fname,lname,id_position,id_subdepart,tel,username,password,id_departmaent,permission FROM la_personal where id_personal="'.$_SESSION['iduser'].'"');
+list($id_personal, $id_prefix, $fname, $lname, $id_position, $id_subdepart, $tel, $username, $password, $id_departmaent, $permission) = $query->fetch_row();
 
 ?>    
 
@@ -146,6 +146,26 @@ list($id_personal, $id_prefix, $fname, $lname, $id_position, $id_subdepart, $tel
             <div class="form-group">
 		<div class="col-sm-3"></div>
         </div>
+        
+                        <div class="form-group">
+	<label class="col-sm-3 control-label">สิทธิ์ผู้ใช้งาน :</label>
+<div class="col-sm-6">
+
+ <?php  $query = db()->query('SELECT * FROM la_permission');
+		echo db()->error;
+		while(list($id_per,$name_per) = $query->fetch_row())
+		{ ?>
+  		<?php if($id_per==$permission){echo $name_per;}?>
+  <?php }?>
+
+</div>    
+</div>  
+            
+            
+            <div class="form-group">
+		<div class="col-sm-3"></div>
+        </div>
+        
             <div class="form-group">
 	<div class="col-sm-5"></div>
 	<div class="col-sm-6">

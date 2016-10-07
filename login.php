@@ -6,13 +6,9 @@ connect_db();
 $username=$_POST['username'];
 $password=$_POST['password'];
 
-$query=db()->query('SELECT id_personal,id_subdepart,permission,id_boss
-FROM la_personal WHERE username = "'. $username .'" AND
-password ="'. $password .'" LIMIT 1');
-
-$row = $query->fetch_assoc();
+$query=db()->query('SELECT id_personal, id_subdepart, permission, id_boss FROM la_personal WHERE username = "'. $username .'" AND password ="'. $password .'" LIMIT 1');
 echo db()->error;
-
+$row = $query->fetch_assoc();
 if($query->num_rows>0)
 {
     //ผ่าน

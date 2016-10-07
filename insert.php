@@ -38,9 +38,10 @@ $status1= 0;
 $status2= 0;
 $status3= 0;
 $file= $name;
+$idboss= $_POST['idboss'];
 $namla=$caldate+1;
 
-$s = sprintf("INSERT INTO la_detail (id_type,sdate,ndate,comment,id_personal,id_personal_tan,now_date,status1,status2,status3,file,namla) VALUES('".$id_type."','".$sdate."','".$ndate."','".$comment."','".$id_personal."','".$perdutytan."','".$now_date."','".$status1."','".$status2."','".$status3."','".$file."','".$namla."')");
+$s = sprintf("INSERT INTO la_detail (id_type,sdate,ndate,comment,id_personal,id_personal_tan,now_date,status1,status2,status3,file,namla,id_boss) VALUES('".$id_type."','".$sdate."','".$ndate."','".$comment."','".$id_personal."','".$perdutytan."','".$now_date."','".$status1."','".$status2."','".$status3."','".$file."','".$namla."','".$idboss."')");
 db()->query($s);
 echo db()->error;
 header('Location:add.php');

@@ -1,4 +1,3 @@
-
 <?php
 include 'config.php';
 connect_db();
@@ -8,7 +7,6 @@ if(!isset($_SESSION['login']))
 {
   header('Location:index.html');
   die();
-
 }
 ?>
 <!DOCTYPE html>

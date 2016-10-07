@@ -27,9 +27,9 @@
 <button type="button" class="btn btn-warning btn-lg"><a href="page2.php"></href>หน้าหลัก</button>
 <button type="button" class="btn btn-primarys btn-lg"><a href="add.php"></href>เพิ่มข้อมูลการลา</button>
 <button type="button" class="btn btn-primarys btn-lg"><a href="datala.php"></href>สรุปจำนวนการลา</button>&nbsp;
-<?php if($_SESSION['permiss']==1 or $_SESSION['permiss']==2 ){?><button type="button" class="btn primarys btn-lg"><a href="datalaall.php"></href>ข้อมูลการลาทั้งหมด</button>&nbsp;<?php }?>
-<?php if($_SESSION['permiss']==1 or $_SESSION['permiss']==2 ){?><button type="button" class="btn primarys btn-lg"><a href="numlaall.php"></href>สรุปจำนวนการลาทั้งหมด</button>&nbsp;<?php }?>
-<?php if($_SESSION['permiss']==1 or $_SESSION['permiss']==2 ){?><button type="button" class="btn primarys btn-lg"><a href="laallow.php"></href>อนุมัติการลา</button><?php }?>
+<?php if($_SESSION['permiss']==3 or $_SESSION['permiss']==2 or $_SESSION['permiss']==4 ){?><button type="button" class="btn primarys btn-lg"><a href="datalaall.php"></href>ข้อมูลการลาทั้งหมด</button>&nbsp;<?php }?>
+<?php if($_SESSION['permiss']==3 or $_SESSION['permiss']==2 or $_SESSION['permiss']==4 ){?><button type="button" class="btn primarys btn-lg"><a href="numlaall.php"></href>สรุปจำนวนการลาทั้งหมด</button>&nbsp;<?php }?>
+<?php if($_SESSION['permiss']==3 or $_SESSION['permiss']==2 or $_SESSION['permiss']==4){?><button type="button" class="btn primarys btn-lg"><a href="laallow.php"></href>อนุมัติการลา</button><?php }?>
 
 </center><br><br><br></div>
 <body id="page-top" class="index">
@@ -50,6 +50,8 @@
 <ul class="nav navbar-nav navbar-right">
 	<li class="hidden">
 <a href="#page-top"></a></li>
+<?php if($_SESSION['permiss']==3){?><li class="page-scroll"><a href="addper.php">เพิ่มข้อมูลบุคลากร</a></li><?php }?>
+<?php if($_SESSION['permiss']==3){?><li class="page-scroll"><a href="showper.php">ดูข้อมูลบุคลากร</a></li><?php }?>
 	<li class="page-scroll"><a href="information.php">ข้อมูลส่วนตัว</a></li>
     <li class="page-scroll"><a href="edit.php">แก้ไขข้อมูลส่วนตัว</a></li>
 	<li class="page-scroll"><a href="logout.php">ออกจากระบบ</a></li></ul></div></div></nav>

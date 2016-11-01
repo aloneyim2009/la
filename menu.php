@@ -25,8 +25,9 @@
 
 <center><p>
 <button type="button" class="btn btn-warning btn-lg"><a href="page2.php"></href>หน้าหลัก</button>
-<button type="button" class="btn btn-primarys btn-lg"><a href="add.php"></href>เพิ่มข้อมูลการลา</button>
-<button type="button" class="btn btn-primarys btn-lg"><a href="datala.php"></href>สรุปจำนวนการลา</button>&nbsp;
+<?php if($_SESSION['permiss']<>4 ){?><button type="button" class="btn btn-primarys btn-lg"><a href="add.php"></href>เพิ่มข้อมูลการลา</button>&nbsp;<?php }?>
+<?php if($_SESSION['permiss']<>4 ){?><button type="button" class="btn btn-primarys btn-lg"><a href="datala.php"></href>สรุปจำนวนการลา</button>&nbsp;<?php }?>
+<?php if($_SESSION['permiss']<>4 ){?><button type="button" class="btn btn-primarys btn-lg"><a href="datalaper.php"></href>ข้อมูลการลา</button>&nbsp;<?php }?>
 <?php if($_SESSION['permiss']==3 or $_SESSION['permiss']==2 or $_SESSION['permiss']==4 ){?><button type="button" class="btn primarys btn-lg"><a href="datalaall.php"></href>ข้อมูลการลาทั้งหมด</button>&nbsp;<?php }?>
 <?php if($_SESSION['permiss']==3 or $_SESSION['permiss']==2 or $_SESSION['permiss']==4 ){?><button type="button" class="btn primarys btn-lg"><a href="numlaall.php"></href>สรุปจำนวนการลาทั้งหมด</button>&nbsp;<?php }?>
 <?php if($_SESSION['permiss']==3 or $_SESSION['permiss']==2 or $_SESSION['permiss']==4){?><button type="button" class="btn primarys btn-lg"><a href="laallow.php"></href>อนุมัติการลา</button><?php }?>
@@ -42,7 +43,7 @@
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </button>
-<a class="navbar-brand" href="#portfolio">ระบบการลาของบุคลากร</a>
+<a class="navbar-brand" href="#portfolio">ระบบการลาบุคลากร</a>
         
 </div>
 
@@ -50,8 +51,9 @@
 <ul class="nav navbar-nav navbar-right">
 	<li class="hidden">
 <a href="#page-top"></a></li>
-<?php if($_SESSION['permiss']==3){?><li class="page-scroll"><a href="addper.php">เพิ่มข้อมูลบุคลากร</a></li><?php }?>
-<?php if($_SESSION['permiss']==3){?><li class="page-scroll"><a href="showper.php">ดูข้อมูลบุคลากร</a></li><?php }?>
+<?php if($_SESSION['permiss']==3){?><li class="page-scroll"><a href="addlatotal.php">เพิ่มวันลาสะสม</a></li><?php }?>
+<?php if($_SESSION['permiss']==3){?><li class="page-scroll"><a href="addper.php">เพิ่มบุคลากร</a></li><?php }?>
+<?php if($_SESSION['permiss']==3){?><li class="page-scroll"><a href="showper.php">ข้อมูลบุคลากร</a></li><?php }?>
 	<li class="page-scroll"><a href="information.php">ข้อมูลส่วนตัว</a></li>
     <li class="page-scroll"><a href="edit.php">แก้ไขข้อมูลส่วนตัว</a></li>
-	<li class="page-scroll"><a href="logout.php">ออกจากระบบ</a></li></ul></div></div></nav>
+	<li class="page-scroll"><a href="logout.php">Logout</a></li></ul></div></div></nav>

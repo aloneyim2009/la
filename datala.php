@@ -1,3 +1,4 @@
+
 <?php
 include 'config.php';
 connect_db();
@@ -28,16 +29,98 @@ if(!isset($_SESSION['login']))
 
       <center> 
        <div class="form-group">
-		<label class="col-sm-12 control-label" ><table class="table table-striped" border="1">
+<table class="table table-striped" border="1">
   <tr>
-  <td> ลาป่วย </td>
-  <td> ตั้งแต่วันที่ </td>
-  <td> ถึงวันที่ </td>
-    <td>ลาป่วย คลอดบุตร ลากิจส่วนตัว </td>
-    <td> ตั้งแต่วันที่ </td>
-  <td> ถึงวันที่ </td>
-      <td> ลาทั้งหมด </td>
-         <td> เหลือกี่ครั้ง </td>
+  <th colspan="2"><center>ลาป่วย</center></th>
+  <th colspan="2" ><center>ลากิจ</center></th>
+  <th colspan="2"><center>ลาคลอด</center></th>
+  <th colspan="3"><center>ลาพักผ่อน</center></th>
+ </tr>
+ <tr>
+    <th><center>ครั้ง</center></th>
+  <th><center>วัน</center></th>
+   <th><center>ครั้ง</center></th>
+  <th><center>วัน</center></th>
+    <th><center>ครั้ง</center></th>
+  <th><center>วัน</center></th>
+  <th><center>ครั้ง</center></th>
+  <th><center>จำนวนวันลา</center></th>
+  <th><center>วันลาคงเหลือ</center></th>
+ </tr>
+ <?php 
+ $queryq1 = db()->query('SELECT id_type,id_personal,SUM(namla) AS numall_la FROM la_detail where id_personal="'.$_SESSION['iduser'].'" and id_type=1 group by id_personal,id_type');
+ echo db()->error;
+ $rowq1 = $queryq1->fetch_assoc();
+ 
+ $queryq11 = db()->query('SELECT id_type,id_personal FROM la_detail where id_personal="'.$_SESSION['iduser'].'" and id_type=1');
+ echo db()->error;
+
+ 
+ $queryq2 = db()->query('SELECT id_type,id_personal,SUM(namla) AS numall_la FROM la_detail where id_personal="'.$_SESSION['iduser'].'" and id_type=2 group by id_personal,id_type');
+ echo db()->error;
+ $rowq2 = $queryq2->fetch_assoc();
+ 
+ $queryq12 = db()->query('SELECT id_type,id_personal FROM la_detail where id_personal="'.$_SESSION['iduser'].'" and id_type=2');
+ echo db()->error;
+ 
+ $queryq3 = db()->query('SELECT id_type,id_personal,SUM(namla) AS numall_la FROM la_detail where id_personal="'.$_SESSION['iduser'].'" and id_type=3 group by id_personal,id_type');
+ echo db()->error;
+ $rowq3 = $queryq3->fetch_assoc();
+ 
+ $queryq13 = db()->query('SELECT id_type,id_personal FROM la_detail where id_personal="'.$_SESSION['iduser'].'" and id_type=3');
+ echo db()->error;
+ 
+ $queryq4 = db()->query('SELECT id_type,id_personal,SUM(namla) AS numall_la FROM la_detail where id_personal="'.$_SESSION['iduser'].'" and id_type=4 group by id_personal,id_type');
+ echo db()->error;
+ $rowq4 = $queryq4->fetch_assoc();
+ 
+ $queryq14 = db()->query('SELECT id_type,id_personal FROM la_detail where id_personal="'.$_SESSION['iduser'].'" and id_type=4');
+ echo db()->error;
+ ?>
+      <tr>
+   <td><?php echo  $queryq12->num_rows;?></td>
+  <td><?php 
+  if(isset($rowq2['numall_la'])){
+  	echo $rowq2['numall_la'];
+  }else{
+  	echo 0;
+  }
+  ?></td>
+    <td><?php echo  $queryq13->num_rows;?></td>
+  <td><?php 
+if(isset($rowq3['numall_la'])){
+  	echo $rowq3['numall_la'];
+  }else{
+  	echo 0;
+  }
+  ?></td>
+    <td><?php echo  $queryq14->num_rows;?></td>
+  <td><?php 
+if(isset($rowq4['numall_la'])){
+  	echo $rowq4['numall_la'];
+  }else{
+  	echo 0;
+  }
+  ?></td>
+
+  <td><?php echo  $queryq11->num_rows;?></td>
+  <td><center><?php 
+if(isset($rowq1['numall_la'])){
+  	echo $rowq1['numall_la'];
+  }else{
+  	echo 0;
+  }
+  ?></center></td>
+  <td><center>
+   <?php 
+   $queryq5 = db()->query('SELECT * FROM la_personal where id_personal="'.$_SESSION['iduser'].'"');
+   echo db()->error;
+   $rowq5 = $queryq5->fetch_assoc();
+
+   echo (10+$rowq5['colagela'])-$rowq1['numall_la'];
+
+   ?>
+  </center></td>
     </tr>
    
 </div>

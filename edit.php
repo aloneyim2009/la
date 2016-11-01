@@ -29,8 +29,8 @@ if(!isset($_SESSION['login']))
 <div class="col-lg-12" style="background-color:#CCFFFF;">
 
 <?php    
-$query = db()->query('SELECT id_personal,id_prefix,fname,lname,id_position,id_subdepart,tel,username,password,id_departmaent,permission FROM la_personal where id_personal="'.$_SESSION['iduser'].'"');
-list($id_personal, $id_prefix, $fname, $lname, $id_position, $id_subdepart, $tel, $username, $password, $id_departmaent, $permission) = $query->fetch_row();
+$query = db()->query('SELECT id_personal,id_prefix,fname,lname,email,id_position,id_subdepart,tel,username,password,id_departmaent,permission FROM la_personal where id_personal="'.$_SESSION['iduser'].'"');
+list($id_personal, $id_prefix, $fname, $lname, $email, $id_position, $id_subdepart, $tel, $username, $password, $id_departmaent, $permission) = $query->fetch_row();
 
 ?>    
 
@@ -73,6 +73,13 @@ list($id_personal, $id_prefix, $fname, $lname, $id_position, $id_subdepart, $tel
 		<div class="col-sm-3"></div>
         </div>
         
+              	<div class="form-group">
+	<label class="col-sm-3 control-label" >Email: </label>
+        <div class="col-sm-6">
+		<input type="text" name="email" class="form-control" value="<?php echo $email;?>">
+	 </div>
+		<div class="col-sm-3"></div>
+        </div>
             
          <div class="form-group">
 	<label class="col-sm-3 control-label">ตำแหน่ง :</label>

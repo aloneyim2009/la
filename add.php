@@ -188,9 +188,9 @@ while(list($id_detail,$id_type,$sdate,$ndate,$comment,$id_personal,$now_date,$st
          <td>
          <?php 
 			if($id_type==1){
-			?>	 <a href="from1pdf.php?id_detail=<?php echo $id_detail;?>">คลิ๊ก</a>
+			?>	 <a href="from1pdf.php?id_detail=<?php echo $id_detail;?>" target="_blank">CLICK</a>
 			<?php }else{?>
-				<a href="from2.php?id_detail=<?php echo $id_detail;?>">คลิ๊ก</a>
+				<a href="from2pdf.php?id_detail=<?php echo $id_detail;?>" target="_blank">CLICK</a>
 			<?php }
 		?>
         </td>

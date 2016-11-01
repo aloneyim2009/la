@@ -41,8 +41,29 @@ $file= $name;
 $idboss= $_POST['idboss'];
 $namla=$caldate+1;
 
-$s = sprintf("INSERT INTO la_detail (id_type,sdate,ndate,comment,id_personal,id_personal_tan,now_date,status1,status2,status3,file,namla,id_boss) VALUES('".$id_type."','".$sdate."','".$ndate."','".$comment."','".$id_personal."','".$perdutytan."','".$now_date."','".$status1."','".$status2."','".$status3."','".$file."','".$namla."','".$idboss."')");
+if($_POST['category']==1){
+	$queryq2 = db()->query('SELECT id_type,id_personal,SUM(namla) AS numall_la FROM la_detail where id_personal="'.$_SESSION['iduser'].'" and id_type=1 group by id_personal,id_type');
+	echo db()->error;
+	$rowq2 = $queryq2->fetch_assoc();
+}elseif($_POST['category']==2){
+	$queryq2 = db()->query('SELECT id_type,id_personal,SUM(namla) AS numall_la FROM la_detail where id_personal="'.$_SESSION['iduser'].'" and id_type=2 group by id_personal,id_type');
+	echo db()->error;
+	$rowq2 = $queryq2->fetch_assoc();
+}elseif($_POST['category']==3){
+	$queryq2 = db()->query('SELECT id_type,id_personal,SUM(namla) AS numall_la FROM la_detail where id_personal="'.$_SESSION['iduser'].'" and id_type=3 group by id_personal,id_type');
+	echo db()->error;
+	$rowq2 = $queryq2->fetch_assoc();
+}else{
+	$queryq2 = db()->query('SELECT id_type,id_personal,SUM(namla) AS numall_la FROM la_detail where id_personal="'.$_SESSION['iduser'].'" and id_type=4 group by id_personal,id_type');
+	echo db()->error;
+	$rowq2 = $queryq2->fetch_assoc();
+}
+
+$s = sprintf("INSERT INTO la_detail (id_type,sdate,ndate,comment,id_personal,id_personal_tan,now_date,status1,status2,status3,file,namla,numlatotal,id_boss) VALUES('".$id_type."','".$sdate."','".$ndate."','".$comment."','".$id_personal."','".$perdutytan."','".$now_date."','".$status1."','".$status2."','".$status3."','".$file."','".$namla."','".$rowq2['numall_la']."','".$idboss."')");
 db()->query($s);
 echo db()->error;
+
+
+
 header('Location:add.php');
 ?> 

@@ -68,6 +68,16 @@ if(!isset($_SESSION['login']))
 		<div class="col-sm-3"></div>
         </div>
         
+        <div class="form-group">
+		<label class="col-sm-3 control-label" >Email: </label>
+        
+        <div class="col-sm-6">
+		  <input type="text" name="email" class="form-control" value="">
+		</div>
+	</div>
+         <div class="form-group">
+		<div class="col-sm-3"></div>
+        </div>
             
          <div class="form-group">
 	<label class="col-sm-3 control-label">ตำแหน่ง :</label>

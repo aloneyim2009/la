@@ -36,6 +36,7 @@ if(!isset($_SESSION['login']))
 		<td>ลำดับ</td>
 		<td>ชื่อ</td>
 		<td>นามสกุล</td>
+		<td>Email</td>
 		<td>รหัสผู้ใช้งาน</td>
 		<td>รหัสผ่าน</td>             
 		<td>ตำแหน่ง</td>
@@ -44,6 +45,7 @@ if(!isset($_SESSION['login']))
 		<td>สังกัด</td>
 		<td>ผู้อนุมัติการลา</td>
 		<td>สิทธิ์</td>
+		<td>จำนวนวันลาสะสม</td>
         <td>แก้ไข</td>
         <td>ลบ</td>
 	</tr>
@@ -51,7 +53,7 @@ if(!isset($_SESSION['login']))
 $query = db()->query('SELECT * FROM la_personal');
 $count=1;
 echo db()->error;
-while(list($id_personal,$id_prefix,$username,$password,$fname,$lname,$id_position,$id_subdepart,$id_departmaent,$id_boss,$tel,$permission) = $query->fetch_row()){
+while(list($id_personal,$id_prefix,$username,$password,$fname,$lname,$email,$id_position,$id_subdepart,$id_departmaent,$id_boss,$tel,$permission,$colagela) = $query->fetch_row()){
 ?>
 
 <tr>
@@ -63,6 +65,7 @@ while(list($id_personal,$id_prefix,$username,$password,$fname,$lname,$id_positio
 		echo $row1['nameprefix'].$fname;
 		?></td>
 		<td><?php echo $lname;;?></td>
+		<td><?php echo $email;?></td>
 		<td><?php echo $username;?></td>
    	 <td><?php echo $password;?></td>
         <td><?php 
@@ -101,6 +104,7 @@ while(list($id_personal,$id_prefix,$username,$password,$fname,$lname,$id_positio
 		$row5 = $query5->fetch_assoc();
 		echo $row5['name_per'];
 		?></td> 
+		  <td><?php echo $colagela; ?></td> 
 		<td><a href="editper.php?idpersonal=<?php echo $id_personal;?>">แก้ไข</a></td>
 		<td><a href="deleteper.php?idpersonal=<?php echo $id_personal;?>">ลบ</a></td>
 		</tr>

@@ -28,10 +28,10 @@ if(!isset($_SESSION['login']))
 	<?php include 'menu.php';?>
 
     <?php
-$query = db()->query('SELECT id_personal,id_prefix,fname,lname,id_position,id_subdepart,id_departmaent,tel,username,password FROM la_personal where id_personal="'.$_SESSION['iduser'].'"');
+$query = db()->query('SELECT id_personal,id_prefix,fname,lname,email,id_position,id_subdepart,id_departmaent,tel,username,password FROM la_personal where id_personal="'.$_SESSION['iduser'].'"');
 echo db()->error;
 
-while(list($id_personal,$id_prefix,$fname,$lname,$id_position,$id_subdepart,$id_departmaent,$tel,$username,$password) = $query->fetch_row())
+while(list($id_personal,$id_prefix,$fname,$lname,$email,$id_position,$id_subdepart,$id_departmaent,$tel,$username,$password) = $query->fetch_row())
 {
 ?>
     
@@ -72,6 +72,11 @@ $row = $query->fetch_assoc();
 <center><h3>เบอร์โทร:    
     <td><?php 
   echo $tel;?>
+    </td>&nbsp;
+    
+Email:    
+    <td><?php 
+  echo $email;?>
     </td>&nbsp;
     
 ไอดีล็อกอิน:    
